@@ -2,28 +2,23 @@
 <html lang="en">
 
 <head>
-    <meta property="og:url"
-        content="/">
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="First commit" />
-    <meta property="og:description" content="How much does culture influence creative thinking?" />
-    <meta property="og:image"
-        content="https://mir-s3-cdn-cf.behance.net/project_modules/disp/97f2bc36467095.571df930d7a59.jpg" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Commit</title>
-    <style>
-        body {
-            text-align: center;
-            margin: 0 auto;
-            font-family: sans-serif;
-        }
-    </style>
+    <link rel="stylesheet" href="css/main.css">
+    <meta name="author" content="Dmitry IT-Academy STEP Kyiv">
+    <meta name="description" content="Home work 21.09.2021">
+    <link rel="icon" href="img/favicon.ico">
+    <title>Paint</title>
 </head>
 
 <body>
-    <h2>First commit</h2>
-<img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/97f2bc36467095.571df930d7a59.jpg" alt="">
+    <canvas id="canvas" width="400" height="500">
+
+    </canvas>
+    <form>
+        <input type="range" id="thickness" name="pencilThick" value="3">
+    </form>
+    <script src="script/main.js"></script>
 </body>
 
 </html>
