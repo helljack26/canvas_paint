@@ -28,12 +28,11 @@ body main {
 
 body main #container {
   margin: 0 auto;
-  width: 99%;
+  width: 100%;
   height: 80%;
 }
 
 body main header {
-  margin-bottom: 3px;
   background-color: royalblue;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -106,12 +105,14 @@ body main .footer div .footer-input {
   cursor: pointer;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  margin: 0 auto;
   overflow: hidden;
 }
 
 body main .footer div input[type="color" i] {
   border: none;
+  border-radius: 5px;
+  width: 100px;
   background-color: transparent;
 }
 

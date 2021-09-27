@@ -7,7 +7,7 @@ const canvasSizeRender = () => {
     canvas.setAttribute('width', `${w}`)
     canvas.setAttribute('height', `${h}`)
 }
-window.onresize = () =>{
+window.onresize = () => {
     canvasSizeRender()
 }
 canvasSizeRender()
@@ -24,7 +24,6 @@ thick.onchange = () => {
 }
 thickRender();
 
-
 // Canvas 
 const ctx = canvas.getContext('2d')
 
@@ -33,11 +32,13 @@ let thickness
 document.getElementById('thickness').addEventListener('change', e => {
     thickness = e.target.value
 })
+
 // Brush color
 let brushColor;
 document.getElementById('colorBr').addEventListener('change', e => {
     brushColor = e.target.value;
 });
+
 // Background color
 let backgroundColor;
 document.getElementById('colorBg').addEventListener('change', e => {
@@ -47,52 +48,42 @@ document.getElementById('colorBg').addEventListener('change', e => {
 
 // Drawing function
 const drawingFn = function (moveEvent) {
-    ctx.lineTo(moveEvent.offsetX, moveEvent.offsetY)
-    ctx.lineWidth = document.getElementById('thickness').value;
-    ctx.lineWidth = thickness * 0.5;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.imageSmoothingEnabled = true;
-    // Brush color
-    ctx.strokeStyle = 'white';
-    ctx.strokeStyle = brushColor;
-    ctx.stroke()
-}
-canvas.addEventListener('mousedown', e => {
-    // console.dir(e)
-    ctx.beginPath()
-    let x = e.offsetX
-    let y = e.offsetY
-    ctx.moveTo(x, y)
+        ctx.lineTo(moveEvent.offsetX, moveEvent.offsetY)
+        ctx.lineWidth = document.getElementById('thickness').value;
+        ctx.lineWidth = thickness * 0.5;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.imageSmoothingEnabled = true;
+        // Brush color
+        ctx.strokeStyle = 'white';
+        ctx.strokeStyle = brushColor;
+        ctx.stroke()
+    }
 
-    ctx.stroke()
-    canvas.addEventListener('mousemove', drawingFn)
-})
+        canvas.addEventListener('mousedown', e => {
+            ctx.beginPath()
+            let x = e.offsetX
+            let y = e.offsetY
+            ctx.moveTo(x, y)
+            ctx.stroke()
+            canvas.addEventListener('mousemove', drawingFn)
+        })
 
-canvas.addEventListener('mouseup', e => canvas.removeEventListener('mousemove', drawingFn))
+        canvas.addEventListener('mouseup', e => {
+            canvas.removeEventListener('mousemove', drawingFn)
+        })
 
+        // Undo button
+        // document.getElementById('undo').onclick = function () {
+        // };
 
-
-// // Download button
-// var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); // here is the most important part because if you dont replace you will get a DOM 18 exception.
-
-
-// window.location.href = image;
-
-
-// document.getElementById('download').onclick =() =>{
-//     // Download button
-// var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); // here is the most important part because if you dont replace you will get a DOM 18 exception.
-
-
-// window.location.href = image;
-// }
-document.getElementById('download').onclick = function () {
-    const dataURL = canvas.toDataURL("image/jpeg");
-    const link = document.createElement("a");
-    document.body.appendChild(link);
-    link.href = dataURL;
-    link.download = "canvas.png";
-    link.click();
-    document.body.removeChild(link);
-};
+        // Download button
+        document.getElementById('download').onclick = function () {
+            const dataURL = canvas.toDataURL("image/jpeg");
+            const link = document.createElement("a");
+            document.body.appendChild(link);
+            link.href = dataURL;
+            link.download = "canvas.png";
+            link.click();
+            document.body.removeChild(link);
+        };
