@@ -1,4 +1,115 @@
 body {
-    margin: 0;
-    box-sizing: border-box;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-top: 30px;
+  font-family: sans-serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
+
+body p {
+  padding: 0;
+  margin: 0;
+}
+
+body main {
+  margin: 0 auto;
+  width: 80vw;
+  height: 80vh;
+  border: 2px solid royalblue;
+  overflow: hidden;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+}
+
+body main #container {
+  margin: 0 auto;
+  width: 99%;
+  height: 80%;
+}
+
+body main header {
+  margin-bottom: 3px;
+  background-color: royalblue;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 40px;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.549) inset;
+  box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.364) inset;
+}
+
+body main header img {
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
+}
+
+body main header p {
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+body main canvas {
+  background-color: #000000;
+}
+
+body main .footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: lightgray;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: left;
+  padding: 10px 5px;
+}
+
+body main .footer div {
+  margin-right: 20px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body main .footer div #thickness {
+  cursor: pointer;
+}
+
+body main .footer div label {
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+body main .footer div .footer-input {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+body main .footer div input[type="color" i] {
+  border: none;
+  background-color: transparent;
+}
+/*# sourceMappingURL=main.css.map */

@@ -12,12 +12,30 @@
 </head>
 
 <body>
-    <canvas id="canvas" width="400" height="500">
 
-    </canvas>
-    <form>
-        <input type="range" id="thickness" name="pencilThick" value="3">
-    </form>
+    <main>
+        <header><img src="img/logo.png" alt="Paint Logo">
+            <p>untitled - Paint</p>
+        </header>
+        <div id="container">
+            <canvas id="canvas"></canvas>
+        </div>
+        <form class="footer">
+            <div>
+                <p>Thickness: <span id="thick-value"></span>pt</p>
+                <input type="range" id="thickness" name="pencilThick" value="10">
+            </div>
+            <div>
+                <label for="colorBr">Brush color</label>
+                <input class="footer-input" type="color" id="colorBr" name="brushColor" value="#ffffff">
+            </div>
+            <div>
+                <label for="colorBg">Background color</label>
+                <input class="footer-input" type="color" id="colorBg" name="brushColor" value="#000000">
+            </div>
+        </form>
+    </main>
+
     <script src="script/main.js"></script>
 </body>
 
