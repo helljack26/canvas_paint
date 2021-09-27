@@ -23,7 +23,7 @@
         <form class="footer">
             <div>
                 <p>Thickness: <span id="thick-value"></span>pt</p>
-                <input type="range" id="thickness" name="pencilThick" value="10">
+                <input type="range" min="1" id="thickness" name="pencilThick" value="10">
             </div>
             <div>
                 <label for="colorBr">Brush color</label>
@@ -32,6 +32,12 @@
             <div>
                 <label for="colorBg">Background color</label>
                 <input class="footer-input" type="color" id="colorBg" name="brushColor" value="#000000">
+            </div>
+            <div>
+                <button class="footer-btn" id="undo" type="button">&lArr; Undo</button>    
+            </div>
+            <div>
+                <button class="footer-btn" id="download" type="button">&dArr; Download</button>    
             </div>
         </form>
     </main>

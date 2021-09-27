@@ -53,6 +53,7 @@ body {
         }
         canvas {
             background-color: #000000;
+            filter: blur(2px) contrast(4);
         }
         .footer{
             display: flex;
@@ -90,6 +91,20 @@ body {
                     border: none;
                     
                     background-color: transparent;
+                }
+            }
+            .footer-btn{
+                cursor: pointer;
+                padding: 5px 10px;
+                text-transform: uppercase;
+                font-weight: bold;
+                border: none;
+                background-color: rgb(153, 153, 153);
+                border-radius: 5px;
+                
+                &:hover{
+                    background-color: rgb(182, 182, 182);
+                    color: whitesmoke;
                 }
             }
         }

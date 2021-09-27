@@ -61,6 +61,8 @@ body main header p {
 
 body main canvas {
   background-color: #000000;
+  -webkit-filter: blur(2px) contrast(4);
+          filter: blur(2px) contrast(4);
 }
 
 body main .footer {
@@ -111,5 +113,20 @@ body main .footer div .footer-input {
 body main .footer div input[type="color" i] {
   border: none;
   background-color: transparent;
+}
+
+body main .footer .footer-btn {
+  cursor: pointer;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  background-color: #999999;
+  border-radius: 5px;
+}
+
+body main .footer .footer-btn:hover {
+  background-color: #b6b6b6;
+  color: whitesmoke;
 }
 /*# sourceMappingURL=main.css.map */

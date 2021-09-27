@@ -1,10 +1,16 @@
 // Set width and height for canvas
 const container = document.getElementById('container')
-let h = container.clientHeight;
-let w = container.clientWidth;
-const canvas = document.getElementById('canvas')
-canvas.setAttribute('width', `${w}`)
-canvas.setAttribute('height', `${h}`)
+const canvasSizeRender = () => {
+    let h = container.clientHeight;
+    let w = container.clientWidth;
+    const canvas = document.getElementById('canvas')
+    canvas.setAttribute('width', `${w}`)
+    canvas.setAttribute('height', `${h}`)
+}
+window.onresize = () =>{
+    canvasSizeRender()
+}
+canvasSizeRender()
 
 // Render thickness value 
 const thick = document.getElementById('thickness');
@@ -46,6 +52,7 @@ const drawingFn = function (moveEvent) {
     ctx.lineWidth = thickness * 0.5;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
+    ctx.imageSmoothingEnabled = true;
     // Brush color
     ctx.strokeStyle = 'white';
     ctx.strokeStyle = brushColor;
@@ -63,3 +70,29 @@ canvas.addEventListener('mousedown', e => {
 })
 
 canvas.addEventListener('mouseup', e => canvas.removeEventListener('mousemove', drawingFn))
+
+
+
+// // Download button
+// var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); // here is the most important part because if you dont replace you will get a DOM 18 exception.
+
+
+// window.location.href = image;
+
+
+// document.getElementById('download').onclick =() =>{
+//     // Download button
+// var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); // here is the most important part because if you dont replace you will get a DOM 18 exception.
+
+
+// window.location.href = image;
+// }
+document.getElementById('download').onclick = function () {
+    const dataURL = canvas.toDataURL("image/jpeg");
+    const link = document.createElement("a");
+    document.body.appendChild(link);
+    link.href = dataURL;
+    link.download = "canvas.png";
+    link.click();
+    document.body.removeChild(link);
+};
