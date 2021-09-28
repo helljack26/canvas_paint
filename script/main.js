@@ -1,3 +1,9 @@
+var cursor = document.getElementById("cursor");
+document.body.addEventListener("mousemove", function(e) {
+  cursor.style.left = e.clientX + "px",
+    cursor.style.top = e.clientY + "px";
+});
+
 // Set width and height for canvas
 const container = document.getElementById('container')
 const canvasSizeRender = () => {
@@ -74,7 +80,7 @@ canvas.addEventListener('mouseup', e => {
     function cPush() {
         cPushArray.push(document.getElementById('canvas').toDataURL());
     }
-    cPush() 
+    cPush()
     canvas.removeEventListener('mousemove', drawingFn)
 })
 
@@ -92,9 +98,11 @@ document.getElementById('download').onclick = function () {
 // Undo button
 document.getElementById('undo').onclick = function () {
     ctx.clearRect(0, 0, 10000, 10000);
-        cPushArray.pop()
-        let last = cPushArray.length-1
-        var canvasPic = new Image();
-        canvasPic.src = cPushArray[last];
-        canvasPic.onload = function () { ctx.drawImage(canvasPic, 0,0); }
+    cPushArray.pop()
+    let last = cPushArray.length - 1
+    var canvasPic = new Image();
+    canvasPic.src = cPushArray[last];
+    canvasPic.onload = function () {
+        ctx.drawImage(canvasPic, 0, 0);
+    }
 };
