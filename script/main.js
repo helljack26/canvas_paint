@@ -48,42 +48,53 @@ document.getElementById('colorBg').addEventListener('change', e => {
 
 // Drawing function
 const drawingFn = function (moveEvent) {
-        ctx.lineTo(moveEvent.offsetX, moveEvent.offsetY)
-        ctx.lineWidth = document.getElementById('thickness').value;
-        ctx.lineWidth = thickness * 0.5;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        ctx.imageSmoothingEnabled = true;
-        // Brush color
-        ctx.strokeStyle = 'white';
-        ctx.strokeStyle = brushColor;
-        ctx.stroke()
+    ctx.lineTo(moveEvent.offsetX, moveEvent.offsetY)
+    ctx.lineWidth = document.getElementById('thickness').value;
+    ctx.lineWidth = thickness * 0.5;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.imageSmoothingEnabled = true;
+    // Brush color
+    ctx.strokeStyle = 'white';
+    ctx.strokeStyle = brushColor;
+    ctx.stroke()
+}
+
+canvas.addEventListener('mousedown', e => {
+    ctx.beginPath()
+    let x = e.offsetX
+    let y = e.offsetY
+    ctx.moveTo(x, y)
+    ctx.stroke()
+    canvas.addEventListener('mousemove', drawingFn)
+})
+var cPushArray = new Array();
+
+canvas.addEventListener('mouseup', e => {
+    function cPush() {
+        cPushArray.push(document.getElementById('canvas').toDataURL());
     }
+    cPush() 
+    canvas.removeEventListener('mousemove', drawingFn)
+})
 
-        canvas.addEventListener('mousedown', e => {
-            ctx.beginPath()
-            let x = e.offsetX
-            let y = e.offsetY
-            ctx.moveTo(x, y)
-            ctx.stroke()
-            canvas.addEventListener('mousemove', drawingFn)
-        })
+// Download button
+document.getElementById('download').onclick = function () {
+    const dataURL = canvas.toDataURL("image/jpeg");
+    const link = document.createElement("a");
+    document.body.appendChild(link);
+    link.href = dataURL;
+    link.download = "canvas.png";
+    link.click();
+    document.body.removeChild(link);
+};
 
-        canvas.addEventListener('mouseup', e => {
-            canvas.removeEventListener('mousemove', drawingFn)
-        })
-
-        // Undo button
-        // document.getElementById('undo').onclick = function () {
-        // };
-
-        // Download button
-        document.getElementById('download').onclick = function () {
-            const dataURL = canvas.toDataURL("image/jpeg");
-            const link = document.createElement("a");
-            document.body.appendChild(link);
-            link.href = dataURL;
-            link.download = "canvas.png";
-            link.click();
-            document.body.removeChild(link);
-        };
+// Undo button
+document.getElementById('undo').onclick = function () {
+    ctx.clearRect(0, 0, 10000, 10000);
+        cPushArray.pop()
+        let last = cPushArray.length-1
+        var canvasPic = new Image();
+        canvasPic.src = cPushArray[last];
+        canvasPic.onload = function () { ctx.drawImage(canvasPic, 0,0); }
+};
